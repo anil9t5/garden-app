@@ -1,0 +1,32 @@
+{
+    "data": [
+        {
+            "title":"Arethusa bulbosa",
+            "family": "Orchidaceae",
+            "genus":"Arethusa",
+            "species":"bulbosa",
+            "common_name": "Swamp Pink",
+            "french_common_name": "Aréthus Bulbeuse",
+            "plant_type":"non-woody",
+            "habitat":["wetlands"],
+            "leaf_type":["simple"],
+            "leaf_arrangement":["opposite"],
+            "leaf_blade_edges":[],
+            "flower_petal_colour":[],
+            "bloom":"",
+            "armature":"",
+            "bark_texture":"",
+            "growth_form":"",
+            "deciduous_or_coniferous":"",
+            "leaves_per_node":null,
+            "leaf_divisions":null,
+            "spore_bearing_leaflets":"",
+            "native_or_introduced_or_invasive":"",
+            "rank":"",
+            "new_brunswick_county":[""],
+            "img_preview":[],
+            "note":"Dragon's-mouth is endemic to northeastern North America. The genus Arethusa includes only this species and is named after a river nymph from Greek mythology. The flowers are showy and fragrant but offer little or no reward to the pollinator."
+        }
+        
+    ]
+}
