@@ -7,7 +7,7 @@ const ListPlantSpecies = ({ plants_list }) => {
       {/* <PlantSpecies /> */}
       {plants_list.length > 0 &&
         plants_list.map((data, index) => (
-          <div className="d-flex flex-column content-box" key={data.id}>
+          <div className="d-flex flex-column content-box" key={data.ID}>
             <PlantSpecies plant={data} />
           </div>
         ))}
@@ -15,7 +15,7 @@ const ListPlantSpecies = ({ plants_list }) => {
       <style jsx>{`
         .content-box {
           width: 220px;
-          height: 220px;
+          height: 260px;
           margin: 10px;
           margin-bottom: 40px;
         }

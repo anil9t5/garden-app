@@ -4,15 +4,19 @@ import React from "react"
 const PlantSpecies = ({ plant }) => {
   return (
     <>
-      <div className="img-container">
-        <img src={plant.imgUrl} alt="" />
-      </div>
-      <div className="description">
-        <h4 className="heading">{plant.name}</h4>
-        <span>
-          <strong>Common name:</strong> {plant.common_name}
-        </span>
-      </div>
+      {plant.acf.plant_type == "non-woody" && (
+        <>
+          <div className="img-container">
+            <img src={plant.acf.image_preview[0].thumbnail_image_url} alt="" />
+          </div>
+          <div className="description">
+            <h4 className="heading">{`${plant.acf.genus} ${plant.acf.species}`}</h4>
+            <span>
+              <strong>Common name:</strong> {plant.acf.common_name}
+            </span>
+          </div>
+        </>
+      )}
       <style jsx>{`
         .img-container {
           overflow: hidden;
