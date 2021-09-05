@@ -5,6 +5,7 @@ import ListPlantSpecies from "../components/main/ListPlantSpecies"
 import SideNav from "../components/side-nav/SideNav"
 
 const NonWoodyPlants = ({ plants_list }) => {
+  console.log(plants_list)
   const dispatch = useDispatch()
   useEffect(() => {
     dispatch(fetchNonWoodyPlantPosts())
