@@ -34,3 +34,10 @@ a {
   margin-top: 15px;
   margin-bottom: 60px;
 }
+
+.dropzone {
+  width: 500px;
+  height: 500px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e1e3;
+}

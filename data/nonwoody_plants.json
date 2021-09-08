@@ -1,32 +1,67 @@
 {
     "data": [
         {
-            "title":"Arethusa bulbosa",
+            "tile": "Cypripedium reginae",
             "family": "Orchidaceae",
-            "genus":"Arethusa",
-            "species":"bulbosa",
-            "common_name": "Swamp Pink",
-            "french_common_name": "Aréthus Bulbeuse",
-            "plant_type":"non-woody",
-            "habitat":["wetlands"],
-            "leaf_type":["simple"],
-            "leaf_arrangement":["opposite"],
-            "leaf_blade_edges":[],
-            "flower_petal_colour":[],
-            "bloom":"",
-            "armature":"",
-            "bark_texture":"",
-            "growth_form":"",
-            "deciduous_or_coniferous":"",
-            "leaves_per_node":null,
-            "leaf_divisions":null,
-            "spore_bearing_leaflets":"",
-            "native_or_introduced_or_invasive":"",
-            "rank":"",
-            "new_brunswick_county":[""],
-            "img_preview":[],
-            "note":"Dragon's-mouth is endemic to northeastern North America. The genus Arethusa includes only this species and is named after a river nymph from Greek mythology. The flowers are showy and fragrant but offer little or no reward to the pollinator."
-        }
+            "genus": "Cypripedium",
+            "species": "reginae",
+            "common_name": "Showy Lady's-Slipper",
+            "french_common_name": "Cypripède Royal",
+            "plant_type": "non-woody",
+            "habitat": [
+            {
+            "value": "wetlands",
+            "label": "Wetlands"
+            }
+            ],
+            "leaf_type": [
+            {
+            "value": "simple",
+            "label": "Simple"
+            }
+            ],
+            "leaf_arrangement": [
+            {
+            "value": "alternate",
+            "label": "Alternate"
+            }
+            ],
+            "leaf_blade_edges": [
+            {
+            "value": "entire",
+            "label": "Entire"
+            }
+            ],
+            "flower_petal_colour": [
+            {
+            "value": "pink to red",
+            "label": "Pink to red"
+            },
+            {
+            "value": "white",
+            "label": "White"
+            }
+            ],
+            "bloom_time": "",
+            "armature": "",
+            "bark_texture": "",
+            "growth_form": "",
+            "deciduous_or_coniferous": "",
+            "leaves_per_node": "",
+            "leaf_divisions": "",
+            "spore_bearing_leaflets": "",
+            "native_or_introduced_or_invasive": "native",
+            "rank": "",
+            "new_brunswick_county": [
+            {
+            "value": "carleton county",
+            "label": "Carleton County"
+            }
+            ],
+            "image_preview":[],
+            "note": "Showy lady's slipper is rare in four of the five New England states in which it occurs. It grows in fens and swamps dominated by northern white-cedar (Thuja occidentalis). There have been reports that a small European skipper (a non-native butterfly) becomes trapped in the labellum of this orchid, thus blocking it and preventing pollination by native bees. It is speculated that this may cause a decline of the orchid by decreasing reproduction; however, this has not been confirmed."
+            }
         
     ]
 }
+
