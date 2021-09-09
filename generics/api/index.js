@@ -34,13 +34,14 @@ export async function adminLogin(url, params = {}) {
 }
 
 export async function post(url, params = {}) {
+  console.log(params)
   let accessToken = localStore.getToken()
   return fetch(url, {
     method: "POST",
     headers: {
       Accept: "application/json",
       "Content-Type": "application/json",
-      "access-token": accessToken,
+      Authorization: "Bearer" + accessToken,
     },
     body: JSON.stringify(params),
   })

@@ -23,9 +23,6 @@ const Header = () => {
         href="https://cdn.lineicons.com/3.0/lineicons.css"
         rel="stylesheet"
       />
-      <link
-        rel="stylesheet"
-        href="./font-awesome/css/font-awesome.min.css"></link>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />

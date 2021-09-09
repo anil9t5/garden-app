@@ -13,7 +13,7 @@ const Login = ({ user_data }) => {
     if (isLoggedIn) {
       router.push("/admin")
     }
-  })
+  }, [isLoggedIn, router])
   const dispatch = useDispatch()
   const router = useRouter()
   const login = (details) => {

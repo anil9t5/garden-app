@@ -1,11 +1,7 @@
 import Admin from "../components/main/Admin"
 
 const admin = () => {
-  return (
-    <div>
-      <Admin />
-    </div>
-  )
+  return <Admin />
 }
 
 export default admin
