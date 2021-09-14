@@ -9,7 +9,7 @@ export async function get(url) {
     },
   })
     .then(async (response) => {
-      return await response.json()
+      return await response
     })
     .catch((err) => {
       console.log("err")
@@ -51,4 +51,8 @@ export async function post(url, params = {}) {
     .catch((err) => {
       console.log(err)
     })
+}
+
+export function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1)
 }

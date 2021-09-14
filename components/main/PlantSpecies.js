@@ -3,17 +3,18 @@ import { useRouter } from "next/router"
 
 const PlantSpecies = ({ plant }) => {
   const router = useRouter()
-  console.log("pathname: ", router.pathname == "/nonwoody_plants")
   return (
     <>
       {router.pathname == "/nonwoody_plants" &&
       plant.acf.plant_type == "non-woody" ? (
-        <>
-          {/* <dix className="img-con img-container skeleton"></dix> */}
+        <div
+          className={
+            plant.acf.plant_type == "non-woody" ? "content-box" : "hidden"
+          }>
           <div className="img-container">
             <img
               src={
-                plant.acf.image_preview !== null
+                plant.acf.image_preview.length > 0
                   ? plant.acf.image_preview[0].thumbnail_image_url
                   : "../images/no_result_found.png"
               }
@@ -26,16 +27,18 @@ const PlantSpecies = ({ plant }) => {
               <strong>Common name:</strong> {plant.acf.common_name}
             </span>
           </div>
-        </>
+        </div>
       ) : (
         router.pathname == "/woody_plants" &&
         plant.acf.plant_type == "woody" && (
-          <>
-            {/* <dix className="img-con img-container skeleton"></dix> */}
+          <div
+            className={
+              plant.acf.plant_type == "woody" ? "content-box" : "hidden"
+            }>
             <div className="img-container">
               <img
                 src={
-                  plant.acf.image_preview !== null
+                  plant.acf.image_preview.length > 0
                     ? plant.acf.image_preview[0].thumbnail_image_url
                     : "../images/no_result_found.png"
                 }
@@ -48,10 +51,17 @@ const PlantSpecies = ({ plant }) => {
                 <strong>Common name:</strong> {plant.acf.common_name}
               </span>
             </div>
-          </>
+          </div>
         )
       )}
       <style jsx>{`
+        .content-box {
+          width: 220px;
+          height: auto;
+          margin: 10px;
+          overflow: hidden;
+          margin-bottom: 40px;
+        }
         .img-container {
           overflow: hidden;
           width: 100%;
@@ -63,6 +73,9 @@ const PlantSpecies = ({ plant }) => {
             height: 100%;
             object-fit: cover;
           }
+        }
+        .hidden {
+          display: none;
         }
       `}</style>
     </>

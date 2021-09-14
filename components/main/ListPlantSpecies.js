@@ -7,20 +7,10 @@ const ListPlantSpecies = ({ plants_list }) => {
       {/* <PlantSpecies /> */}
       {plants_list.length > 0 &&
         plants_list.map((data, index) => (
-          <div className="content-box" key={data.ID}>
-            <PlantSpecies plant={data} />
-          </div>
+          // <div className="content-box" key={data.id}>
+          // </div>
+          <PlantSpecies plant={data} key={data.id} />
         ))}
-
-      <style jsx>{`
-        .content-box {
-          width: 220px;
-          height: auto;
-          margin: 10px;
-          overflow: hidden;
-          margin-bottom: 40px;
-        }
-      `}</style>
     </div>
   )
 }
