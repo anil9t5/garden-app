@@ -10,19 +10,30 @@ const SideNav = () => {
   const [leafArrangement, setLeafArrangement] = useState(
     new Array(options.leafArrangement.length).fill(false)
   )
+
+  const [leafType, setLeafType] = useState(
+    new Array(options.leafType.length).fill(false)
+  )
+
   const handleOnChange = (position, option) => {
     switch (option) {
-      case "newBrunswickCounty":
-        const updatedCounty = county.map(
-          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+      case "leafType":
+        const updatedLeafType = leafType.map((item, index) =>
+          index === position ? !item : item
         )
-        setCounty(updatedCounty)
+        setLeafType(updatedLeafType)
         break
       case "leafArrangement":
         const updatedLeafArrangement = leafArrangement.map((item, index) =>
           index === position ? !item : item
         )
         setLeafArrangement(updatedLeafArrangement)
+        break
+      case "newBrunswickCounty":
+        const updatedCounty = county.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        setCounty(updatedCounty)
         break
 
       default:
@@ -42,6 +53,7 @@ const SideNav = () => {
       </div> */}
       {console.log(county)}
       {console.log(leafArrangement)}
+      {console.log(leafType)}
       <div className="options">
         {/* <h4 className="side-nav-heading">Habitat</h4>
         {options.habitat.length > 0 &&
@@ -59,7 +71,13 @@ const SideNav = () => {
             </div>
           ))} */}
 
-        <SideNavContent options={options} />
+        <SideNavContent
+          options={options}
+          county={county}
+          leafType={leafType}
+          leafArrangement={leafArrangement}
+          handleOnChange={handleOnChange}
+        />
       </div>
       {/* <div className="options">
         <h4 className="side-nav-heading">Flower Petal Colour</h4>
