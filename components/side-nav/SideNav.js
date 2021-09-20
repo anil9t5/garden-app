@@ -1,39 +1,66 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
+import { connect, useDispatch } from "react-redux"
 import * as options from "../../data/sideNavListDataArray"
 import SideNavContent from "./SideNavContent"
 
-const SideNav = () => {
-  const [county, setCounty] = useState(
-    new Array(options.newBrunswickCounty.length).fill(false)
-  )
+import {
+  toggleHabitatData,
+  toggleFlowerPetalColorData,
+  toggleLeafBladeEdgesData,
+  toggleLeafTypeData,
+  toggleLeafArrangementData,
+  toggleCountyData,
+} from "../../redux/actions/toggleSelectorAction"
 
-  const [leafArrangement, setLeafArrangement] = useState(
-    new Array(options.leafArrangement.length).fill(false)
-  )
-
-  const [leafType, setLeafType] = useState(
-    new Array(options.leafType.length).fill(false)
-  )
+const SideNav = ({
+  habitat,
+  flowerPetalColor,
+  leafBladeEdges,
+  leafType,
+  leafArrangement,
+  county,
+}) => {
+  const dispatch = useDispatch()
 
   const handleOnChange = (position, option) => {
     switch (option) {
+      case "habitat":
+        const updatedHabitat = habitat.map((item, index) =>
+          index === position ? !item : item
+        )
+        // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
+        dispatch(toggleHabitatData(updatedHabitat))
+        break
+      case "flowerPetalColor":
+        const updatedFlowerPetalColor = flowerPetalColor.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleFlowerPetalColorData(updatedFlowerPetalColor))
+        break
+
+      case "leafBladeEdges":
+        const updatedLeafBladeEdges = leafBladeEdges.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleLeafBladeEdgesData(updatedLeafBladeEdges))
+        break
       case "leafType":
         const updatedLeafType = leafType.map((item, index) =>
           index === position ? !item : item
         )
-        setLeafType(updatedLeafType)
+        dispatch(toggleLeafTypeData(updatedLeafType))
         break
       case "leafArrangement":
         const updatedLeafArrangement = leafArrangement.map((item, index) =>
           index === position ? !item : item
         )
-        setLeafArrangement(updatedLeafArrangement)
+        dispatch(toggleLeafArrangementData(updatedLeafArrangement))
         break
       case "newBrunswickCounty":
         const updatedCounty = county.map(
           (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
         )
-        setCounty(updatedCounty)
+        dispatch(toggleCountyData(updatedCounty))
         break
 
       default:
@@ -51,123 +78,24 @@ const SideNav = () => {
         <h4 className="side-nav-heading">Native Range</h4>
         <span>New Brunswick</span>
       </div> */}
-      {console.log(county)}
-      {console.log(leafArrangement)}
+      {console.log(habitat)}
+      {console.log(flowerPetalColor)}
+      {console.log(leafBladeEdges)}
       {console.log(leafType)}
+      {console.log(leafArrangement)}
+      {console.log(county)}
       <div className="options">
-        {/* <h4 className="side-nav-heading">Habitat</h4>
-        {options.habitat.length > 0 &&
-          options.habitat.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id={index}
-              />
-              <label className="form-check-label" htmlFor={index}>
-                {api.capitalizeFirstLetter(data)}
-              </label>
-            </div>
-          ))} */}
-
         <SideNavContent
           options={options}
-          county={county}
+          habitat={habitat}
+          flowerPetalColor={flowerPetalColor}
+          leafBladeEdges={leafBladeEdges}
           leafType={leafType}
           leafArrangement={leafArrangement}
+          county={county}
           handleOnChange={handleOnChange}
         />
       </div>
-      {/* <div className="options">
-        <h4 className="side-nav-heading">Flower Petal Colour</h4>
-        {options.flowerPetalColor.length > 0 &&
-          options.flowerPetalColor.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id={index}
-              />
-              <label className="form-check-label" htmlFor={index}>
-                {api.capitalizeFirstLetter(data)}
-              </label>
-            </div>
-          ))}
-      </div>
-      <div className="options">
-        <h4 className="side-nav-heading">Leaf Blade Edges</h4>
-        {options.leafBladeEdges.length > 0 &&
-          options.leafBladeEdges.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id={index}
-              />
-              <label className="form-check-label" htmlFor={index}>
-                {api.capitalizeFirstLetter(data)}
-              </label>
-            </div>
-          ))}
-      </div>
-      <div className="options">
-        <h4 className="side-nav-heading">Leaf Blade Edges</h4>
-        {options.leafType.length > 0 &&
-          options.leafType.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id={index}
-              />
-              <label className="form-check-label" htmlFor={index}>
-                {api.capitalizeFirstLetter(data)}
-              </label>
-            </div>
-          ))}
-      </div>
-      <div className="options">
-        <h4 className="side-nav-heading">Leaf Arrangement</h4>
-        {options.leafArrangement.length > 0 &&
-          options.leafArrangement.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id={index}
-                checked={leafArrangement[index]}
-                onChange={(e) => handleOnChange(index, "leafArrangement")}
-              />
-              <label className="form-check-label" htmlFor={index}>
-                {api.capitalizeFirstLetter(data)}
-              </label>
-            </div>
-          ))}
-      </div>
-      <div className="options">
-        <h4 className="side-nav-heading">Leaf Blade Edges</h4>
-        {options.newBrunswickCounty.length > 0 &&
-          options.newBrunswickCounty.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value={data}
-                id={index}
-                checked={county[index]}
-                onChange={(e) => handleOnChange(index, "newBrunswickCounty")}
-              />
-              <label className="form-check-label" htmlFor={index}>
-                {api.capitalizeFirstLetter(data)}
-              </label>
-            </div>
-          ))}
-      </div> */}
       <style jsx>{`
         .sidebar {
           background-color: #f5f6f8;
@@ -185,4 +113,15 @@ const SideNav = () => {
   )
 }
 
-export default SideNav
+const mapStateToProps = (state) => {
+  return {
+    habitat: state.selector.habitat,
+    flowerPetalColor: state.selector.flowerPetalColor,
+    leafBladeEdges: state.selector.leafBladeEdges,
+    leafType: state.selector.leafType,
+    leafArrangement: state.selector.leafArrangement,
+    county: state.selector.county,
+  }
+}
+
+export default connect(mapStateToProps)(SideNav)

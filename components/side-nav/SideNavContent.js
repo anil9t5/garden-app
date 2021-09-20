@@ -3,9 +3,12 @@ import * as api from "../../generics/api"
 
 const SideNavContent = ({
   options,
-  county,
+  habitat,
+  flowerPetalColor,
+  leafBladeEdges,
   leafType,
   leafArrangement,
+  county,
   handleOnChange,
 }) => {
   const optionNames = [
@@ -55,6 +58,12 @@ const SideNavContent = ({
                     ? leafArrangement[index]
                     : item.key == "leafType"
                     ? leafType[index]
+                    : item.key == "habitat"
+                    ? habitat[index]
+                    : item.key == "flowerPetalColor"
+                    ? flowerPetalColor[index]
+                    : item.key == "leafBladeEdges"
+                    ? leafBladeEdges[index]
                     : false
                 }
                 onChange={(e) => handleOnChange(index, item.key)}
