@@ -12,6 +12,11 @@ import {
   toggleCountyData,
 } from "../../redux/actions/toggleSelectorAction"
 
+import {
+  selectorFilterData,
+  activeFilterData,
+} from "../../redux/actions/selectorFilterAction"
+
 const SideNav = ({
   habitat,
   flowerPetalColor,
@@ -19,6 +24,8 @@ const SideNav = ({
   leafType,
   leafArrangement,
   county,
+  selectorFilterList,
+  activeFilterList,
 }) => {
   const dispatch = useDispatch()
 
@@ -68,6 +75,18 @@ const SideNav = ({
     }
   }
 
+  const onSelectorChange = (filter) => {
+    if (activeFilterList.includes(filter)) {
+      const filterIndex = activeFilterList.indexOf(filter)
+      const newFilter = [...activeFilterList]
+      newFilter.splice(filterIndex, 1)
+      // this.setState({ activeFilterList: newFilter })
+      dispatch(activeFilterData(newFilter))
+    } else {
+      // this.setState({ activeFilterList: [...activeFilterList, filter] })
+      dispatch(activeFilterData([...activeFilterList, filter]))
+    }
+  }
   return (
     <div className="sidebar d-flex flex-column justify-content-between">
       {/* <div className="options">
@@ -78,12 +97,14 @@ const SideNav = ({
         <h4 className="side-nav-heading">Native Range</h4>
         <span>New Brunswick</span>
       </div> */}
-      {console.log(habitat)}
+      {/* {console.log(habitat)}
       {console.log(flowerPetalColor)}
       {console.log(leafBladeEdges)}
       {console.log(leafType)}
       {console.log(leafArrangement)}
-      {console.log(county)}
+      {console.log(county)} */}
+      {/* {console.log(selectorFilter)}
+      {console.log(filterChecked)} */}
       <div className="options">
         <SideNavContent
           options={options}
@@ -93,6 +114,7 @@ const SideNav = ({
           leafType={leafType}
           leafArrangement={leafArrangement}
           county={county}
+          onSelectorChange={onSelectorChange}
           handleOnChange={handleOnChange}
         />
       </div>
@@ -121,6 +143,8 @@ const mapStateToProps = (state) => {
     leafType: state.selector.leafType,
     leafArrangement: state.selector.leafArrangement,
     county: state.selector.county,
+    selectorFilterList: state.selector.selectorFilterList,
+    activeFilterList: state.selector.activeFilterList,
   }
 }
 

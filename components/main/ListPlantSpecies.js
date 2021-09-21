@@ -1,15 +1,30 @@
-import React from "react"
+import { connect } from "react-redux"
 import PlantSpecies from "./PlantSpecies"
 
-const ListPlantSpecies = ({ plants_list }) => {
+const ListPlantSpecies = ({ plants_list, activeFilterList }) => {
+  let filteredList
+  if (activeFilterList.length === 0) {
+    filteredList = plants_list
+  } else {
+    filteredList = plants_list.filter((item) =>
+      activeFilterList.includes(item.acf.habitat[0].value)
+    )
+  }
+  console.log(filteredList)
   return (
     <div className="d-flex flex-wrap">
-      {plants_list.length > 0 &&
-        plants_list.map((data, index) => (
-          <PlantSpecies plant={data} key={data.id} />
-        ))}
+      {filteredList.length > 0 &&
+        filteredList.map((data, index) => {
+          return <PlantSpecies plant={data} key={data.id} />
+        })}
     </div>
   )
 }
 
-export default ListPlantSpecies
+const mapStateToProps = (state) => {
+  return {
+    activeFilterList: state.selector.activeFilterList,
+  }
+}
+
+export default connect(mapStateToProps)(ListPlantSpecies)

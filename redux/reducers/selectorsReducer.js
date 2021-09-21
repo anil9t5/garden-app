@@ -8,6 +8,10 @@ const initialState = {
   leafType: new Array(options.leafType.length).fill(false),
   leafArrangement: new Array(options.leafArrangement.length).fill(false),
   county: new Array(options.newBrunswickCounty.length).fill(false),
+  selectorFilter: "none",
+  filterChecked: false,
+  selectorFilterList: [],
+  activeFilterList: [],
 }
 
 export const selectorsReducer = (state = initialState, action) => {
@@ -41,6 +45,26 @@ export const selectorsReducer = (state = initialState, action) => {
       return {
         ...state,
         county: action.payload,
+      }
+    case types.SELECTOR_FILTER:
+      return {
+        ...state,
+        selectorFilter: action.payload,
+      }
+    case types.FILTER_CHECKED:
+      return {
+        ...state,
+        filterChecked: !state.filterChecked,
+      }
+    case types.ACTIVE_SELECTOR_LIST:
+      return {
+        ...state,
+        activeFilterList: action.payload,
+      }
+    case types.SELECTED_FILTER_LIST:
+      return {
+        ...state,
+        selectorFilterList: action.payload,
       }
     default:
       return state

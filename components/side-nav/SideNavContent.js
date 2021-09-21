@@ -9,6 +9,7 @@ const SideNavContent = ({
   leafType,
   leafArrangement,
   county,
+  onSelectorChange,
   handleOnChange,
 }) => {
   const optionNames = [
@@ -51,6 +52,7 @@ const SideNavContent = ({
                 type="checkbox"
                 value={data}
                 id={index}
+                onClick={(e) => onSelectorChange(data)}
                 checked={
                   item.key == "newBrunswickCounty"
                     ? county[index]
