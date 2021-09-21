@@ -6,6 +6,7 @@ import AuthService from "../../generics/authService"
 import LoginForm from "./LoginForm"
 
 const Login = ({ user_data }) => {
+  const router = useRouter()
   const [error, setError] = useState("")
   const auth = new AuthService()
   const isLoggedIn = auth.loggedIn()
@@ -15,7 +16,6 @@ const Login = ({ user_data }) => {
     }
   }, [isLoggedIn, router])
   const dispatch = useDispatch()
-  const router = useRouter()
   const login = (details) => {
     dispatch(adminLogin(details)).then(() => {
       router.push("/admin")
