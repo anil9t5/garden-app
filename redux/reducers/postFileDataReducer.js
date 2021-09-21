@@ -2,9 +2,9 @@ import * as types from "../types"
 const initialState = {
   plants_list: [],
 }
-export const postsReducer = (state = initialState, action) => {
+export const postFileDataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_PLANTS:
+    case types.POST_JSONDATA:
       return {
         ...state,
         plants_list: action.payload,

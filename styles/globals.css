@@ -27,10 +27,24 @@ a {
   font-weight: bold;
 }
 .side-nav-heading {
-  font-size: 1rem !important;
+  font-size: 0.9375rem !important;
   font-weight: bold !important;
 }
 .grid-container {
   margin-top: 15px;
   margin-bottom: 60px;
+}
+
+.dropzone {
+  width: 500px;
+  height: 500px;
+  background-color: #f8f9fa;
+  border: 1px solid #e0e1e3;
+}
+.hyiOnG {
+  height: 400px !important;
+  width: 400px !important;
+}
+.dauDdw span {
+  font-size: 16px !important;
 }

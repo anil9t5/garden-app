@@ -23,9 +23,6 @@ const Header = () => {
         href="https://cdn.lineicons.com/3.0/lineicons.css"
         rel="stylesheet"
       />
-      <link
-        rel="stylesheet"
-        href="./font-awesome/css/font-awesome.min.css"></link>
       <link rel="preconnect" href="https://fonts.gstatic.com" />
 
       <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -37,7 +34,7 @@ const Header = () => {
       <script
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4"
-        crossOrigin="anonymous"></script>
+        crossOrigin="true"></script>
     </Head>
   )
 }

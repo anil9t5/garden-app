@@ -1,13 +1,13 @@
 import * as types from "../types"
 const initialState = {
-  plants_list: [],
+  user_data: [],
 }
-export const postsReducer = (state = initialState, action) => {
+export const loginReducer = (state = initialState, action) => {
   switch (action.type) {
-    case types.GET_PLANTS:
+    case types.POST_USERDATA:
       return {
         ...state,
-        plants_list: action.payload,
+        user_data: action.payload,
       }
     default:
       return state

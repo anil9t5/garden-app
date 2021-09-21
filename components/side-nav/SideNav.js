@@ -1,85 +1,122 @@
-import React from "react"
+import { useState, useEffect } from "react"
+import { connect, useDispatch } from "react-redux"
+import * as options from "../../data/sideNavListDataArray"
+import SideNavContent from "./SideNavContent"
 
-const lightRequirements = [
-  "Deciduous Shade (Spring Sun)",
-  "Partial Shade",
-  "Shade",
-  "Sun",
-]
-const moistureRequirement = ["Dry", "Moist", "Normal", "Wet"]
-const habitat = [
-  "Alpine",
-  "Alvar",
-  "Bog/Fen",
-  "Desert",
-  "Forest",
-  "Lakeshores",
-  "Rocky Bluff",
-  "Savannah",
-  "Tundra",
-  "Woodland",
-]
-const SideNav = () => {
+import {
+  toggleHabitatData,
+  toggleFlowerPetalColorData,
+  toggleLeafBladeEdgesData,
+  toggleLeafTypeData,
+  toggleLeafArrangementData,
+  toggleCountyData,
+} from "../../redux/actions/toggleSelectorAction"
+
+import {
+  selectorFilterData,
+  activeFilterData,
+} from "../../redux/actions/selectorFilterAction"
+
+const SideNav = ({
+  habitat,
+  flowerPetalColor,
+  leafBladeEdges,
+  leafType,
+  leafArrangement,
+  county,
+  selectorFilterList,
+  activeFilterList,
+}) => {
+  const dispatch = useDispatch()
+
+  const handleOnChange = (position, option) => {
+    switch (option) {
+      case "habitat":
+        const updatedHabitat = habitat.map((item, index) =>
+          index === position ? !item : item
+        )
+        // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
+        dispatch(toggleHabitatData(updatedHabitat))
+        break
+      case "flowerPetalColor":
+        const updatedFlowerPetalColor = flowerPetalColor.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleFlowerPetalColorData(updatedFlowerPetalColor))
+        break
+
+      case "leafBladeEdges":
+        const updatedLeafBladeEdges = leafBladeEdges.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleLeafBladeEdgesData(updatedLeafBladeEdges))
+        break
+      case "leafType":
+        const updatedLeafType = leafType.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleLeafTypeData(updatedLeafType))
+        break
+      case "leafArrangement":
+        const updatedLeafArrangement = leafArrangement.map((item, index) =>
+          index === position ? !item : item
+        )
+        dispatch(toggleLeafArrangementData(updatedLeafArrangement))
+        break
+      case "newBrunswickCounty":
+        const updatedCounty = county.map(
+          (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
+        )
+        dispatch(toggleCountyData(updatedCounty))
+        break
+
+      default:
+        break
+    }
+  }
+
+  const onSelectorChange = (filter) => {
+    if (activeFilterList.includes(filter)) {
+      const filterIndex = activeFilterList.indexOf(filter)
+      const newFilter = [...activeFilterList]
+      newFilter.splice(filterIndex, 1)
+      // this.setState({ activeFilterList: newFilter })
+      dispatch(activeFilterData(newFilter))
+    } else {
+      // this.setState({ activeFilterList: [...activeFilterList, filter] })
+      dispatch(activeFilterData([...activeFilterList, filter]))
+    }
+  }
   return (
     <div className="sidebar d-flex flex-column justify-content-between">
-      <div className="options">
+      {/* <div className="options">
         <h4 className="side-nav-heading">Plant Species: </h4>
         <span>Non-Woody</span>
       </div>
       <div className="options">
         <h4 className="side-nav-heading">Native Range</h4>
         <span>New Brunswick</span>
-      </div>
+      </div> */}
+      {/* {console.log(habitat)}
+      {console.log(flowerPetalColor)}
+      {console.log(leafBladeEdges)}
+      {console.log(leafType)}
+      {console.log(leafArrangement)}
+      {console.log(county)} */}
+      {/* {console.log(selectorFilter)}
+      {console.log(filterChecked)} */}
       <div className="options">
-        <h4 className="side-nav-heading">Light Requirements</h4>
-        {lightRequirements.length > 0 &&
-          lightRequirements.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
-                {data}
-              </label>
-            </div>
-          ))}
-      </div>
-      <div className="options">
-        <h4 className="side-nav-heading">Moisture Requirements</h4>
-        {moistureRequirement.length > 0 &&
-          moistureRequirement.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
-                {data}
-              </label>
-            </div>
-          ))}
-      </div>
-      <div className="options">
-        <h4 className="side-nav-heading">Natural Habitat</h4>
-        {habitat.length > 0 &&
-          habitat.map((data, index) => (
-            <div className="form-check" key={index}>
-              <input
-                className="form-check-input"
-                type="checkbox"
-                value=""
-                id="flexCheckDefault"
-              />
-              <label className="form-check-label" htmlFor="flexCheckDefault">
-                {data}
-              </label>
-            </div>
-          ))}
+        <SideNavContent
+          options={options}
+          habitat={habitat}
+          flowerPetalColor={flowerPetalColor}
+          leafBladeEdges={leafBladeEdges}
+          leafType={leafType}
+          leafArrangement={leafArrangement}
+          county={county}
+          onSelectorChange={onSelectorChange}
+          handleOnChange={handleOnChange}
+        />
       </div>
       <style jsx>{`
         .sidebar {
@@ -98,4 +135,17 @@ const SideNav = () => {
   )
 }
 
-export default SideNav
+const mapStateToProps = (state) => {
+  return {
+    habitat: state.selector.habitat,
+    flowerPetalColor: state.selector.flowerPetalColor,
+    leafBladeEdges: state.selector.leafBladeEdges,
+    leafType: state.selector.leafType,
+    leafArrangement: state.selector.leafArrangement,
+    county: state.selector.county,
+    selectorFilterList: state.selector.selectorFilterList,
+    activeFilterList: state.selector.activeFilterList,
+  }
+}
+
+export default connect(mapStateToProps)(SideNav)

@@ -1,13 +1,13 @@
 import { useEffect } from "react"
 import { connect, useDispatch } from "react-redux"
-import { fetchWoodyPlantPosts } from "../redux/actions/postAction"
+import { fetchPlantPosts } from "../redux/actions/postAction"
 import ListPlantSpecies from "../components/main/ListPlantSpecies"
 import SideNav from "../components/side-nav/SideNav"
 
 const WoodyPlants = ({ plants_list }) => {
   const dispatch = useDispatch()
   useEffect(() => {
-    dispatch(fetchWoodyPlantPosts())
+    dispatch(fetchPlantPosts())
   }, [dispatch])
   return (
     <div className="row">
@@ -16,7 +16,9 @@ const WoodyPlants = ({ plants_list }) => {
       </div>
       <div className="col-lg-9">
         {/* <h4>Woody Plants..</h4> */}
-        <ListPlantSpecies plants_list={plants_list} />
+        <div className="grid-container">
+          <ListPlantSpecies plants_list={plants_list} />
+        </div>
       </div>
     </div>
   )
@@ -24,7 +26,7 @@ const WoodyPlants = ({ plants_list }) => {
 
 const mapStateToProps = (state) => {
   return {
-    plants_list: state.post.woody_plants,
+    plants_list: state.post.plants_list,
   }
 }
 
