@@ -4,11 +4,11 @@ import * as api from "../../generics/api"
 const SideNavContent = ({
   options,
   habitat,
-  flowerPetalColor,
-  leafBladeEdges,
-  leafType,
-  leafArrangement,
-  county,
+  flower_petal_colour,
+  leaf_blade_edges,
+  leaf_type,
+  leaf_arrangement,
+  new_brunswick_county,
   onSelectorChange,
   handleOnChange,
 }) => {
@@ -18,26 +18,28 @@ const SideNavContent = ({
       value: "Habitat",
     },
     {
-      key: "flowerPetalColor",
-      value: "Flower Petal Color",
+      key: "flower_petal_colour",
+      value: "Flower Petal Colour",
     },
     {
-      key: "leafBladeEdges",
+      key: "leaf_blade_edges",
       value: "Leaf Blade Edges",
     },
     {
-      key: "leafType",
+      key: "leaf_type",
       value: "Leaf Type",
     },
     {
-      key: "leafArrangement",
+      key: "leaf_arrangement",
       value: "Leaf Arrangement",
     },
     {
-      key: "newBrunswickCounty",
+      key: "new_brunswick_county",
       value: "New Brunswick County",
     },
   ]
+
+  let id = 0
   const option = optionNames.map((item) => {
     return (
       <div key={item.key}>
@@ -45,32 +47,33 @@ const SideNavContent = ({
           <strong>{item.value}</strong>
         </h5>
         {options[item.key].map((data, index) => {
+          id = id + 1
           return (
             <div className="form-check" key={index}>
               <input
                 className="form-check-input"
                 type="checkbox"
                 value={data}
-                id={index}
+                id={id}
                 onClick={(e) => onSelectorChange(data)}
                 checked={
-                  item.key == "newBrunswickCounty"
-                    ? county[index]
-                    : item.key == "leafArrangement"
-                    ? leafArrangement[index]
-                    : item.key == "leafType"
-                    ? leafType[index]
+                  item.key == "new_brunswick_county"
+                    ? new_brunswick_county[index]
+                    : item.key == "leaf_arrangement"
+                    ? leaf_arrangement[index]
+                    : item.key == "leaf_type"
+                    ? leaf_type[index]
                     : item.key == "habitat"
                     ? habitat[index]
-                    : item.key == "flowerPetalColor"
-                    ? flowerPetalColor[index]
-                    : item.key == "leafBladeEdges"
-                    ? leafBladeEdges[index]
+                    : item.key == "flower_petal_colour"
+                    ? flower_petal_colour[index]
+                    : item.key == "leaf_blade_edges"
+                    ? leaf_blade_edges[index]
                     : false
                 }
                 onChange={(e) => handleOnChange(index, item.key)}
               />
-              <label className="form-check-label" htmlFor={index}>
+              <label className="form-check-label" htmlFor={id}>
                 {api.capitalizeFirstLetter(data)}
               </label>
             </div>

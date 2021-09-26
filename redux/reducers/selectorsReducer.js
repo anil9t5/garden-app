@@ -3,14 +3,16 @@ import * as options from "../../data/sideNavListDataArray"
 
 const initialState = {
   habitat: new Array(options.habitat.length).fill(false),
-  flowerPetalColor: new Array(options.flowerPetalColor.length).fill(false),
-  leafBladeEdges: new Array(options.leafBladeEdges.length).fill(false),
-  leafType: new Array(options.leafType.length).fill(false),
-  leafArrangement: new Array(options.leafArrangement.length).fill(false),
-  county: new Array(options.newBrunswickCounty.length).fill(false),
+  flower_petal_colour: new Array(options.flower_petal_colour.length).fill(
+    false
+  ),
+  leaf_blade_edges: new Array(options.leaf_blade_edges.length).fill(false),
+  leaf_type: new Array(options.leaf_type.length).fill(false),
+  leaf_arrangement: new Array(options.leaf_arrangement.length).fill(false),
+  new_brunswick_county: new Array(options.new_brunswick_county.length).fill(
+    false
+  ),
   selectorFilter: "none",
-  filterChecked: false,
-  selectorFilterList: [],
   activeFilterList: [],
 }
 
@@ -24,47 +26,37 @@ export const selectorsReducer = (state = initialState, action) => {
     case types.TOGGLE_FLOWER_PETAL_COLOR:
       return {
         ...state,
-        flowerPetalColor: action.payload,
+        flower_petal_colour: action.payload,
       }
     case types.TOGGLE_LEAF_BLADE_EDGES:
       return {
         ...state,
-        leafBladeEdges: action.payload,
+        leaf_blade_edges: action.payload,
       }
     case types.TOGGLE_LEAF_TYPE:
       return {
         ...state,
-        leafType: action.payload,
+        leaf_type: action.payload,
       }
     case types.TOGGLE_LEAF_ARRANGEMENT:
       return {
         ...state,
-        leafArrangement: action.payload,
+        leaf_arrangement: action.payload,
       }
     case types.TOGGLE_COUNTY:
       return {
         ...state,
-        county: action.payload,
-      }
-    case types.SELECTOR_FILTER:
-      return {
-        ...state,
-        selectorFilter: action.payload,
-      }
-    case types.FILTER_CHECKED:
-      return {
-        ...state,
-        filterChecked: !state.filterChecked,
+        new_brunswick_county: action.payload,
       }
     case types.ACTIVE_SELECTOR_LIST:
       return {
         ...state,
         activeFilterList: action.payload,
       }
-    case types.SELECTED_FILTER_LIST:
+    case types.SELECTOR_FILTER:
       return {
         ...state,
-        selectorFilterList: action.payload,
+        selectorFilter: action.payload,
       }
     default:
       return state

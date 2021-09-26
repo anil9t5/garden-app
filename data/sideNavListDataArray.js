@@ -1,5 +1,5 @@
 const habitat = ["don't know", "aquatic", "terrestrial", "wetlands"]
-const flowerPetalColor = [
+const flower_petal_colour = [
   "don't know",
   "blue to purple",
   "green to brown",
@@ -10,13 +10,13 @@ const flowerPetalColor = [
   "doesn't apply",
 ]
 
-const leafBladeEdges = ["don't know", "lobed", "teethed", "entire"]
+const leaf_blade_edges = ["don't know", "lobed", "teethed", "entire"]
 
-const leafType = ["don't know", "compound", "simple"]
+const leaf_type = ["don't know", "compound", "simple"]
 
-const leafArrangement = ["alternate", "opposite", "basal", "whorled"]
+const leaf_arrangement = ["alternate", "opposite", "basal", "whorled"]
 
-const newBrunswickCounty = [
+const new_brunswick_county = [
   "albert county",
   "carleton county",
   "charlotte county",
@@ -36,9 +36,9 @@ const newBrunswickCounty = [
 
 export {
   habitat,
-  flowerPetalColor,
-  leafBladeEdges,
-  leafType,
-  leafArrangement,
-  newBrunswickCounty,
+  flower_petal_colour,
+  leaf_blade_edges,
+  leaf_type,
+  leaf_arrangement,
+  new_brunswick_county,
 }
