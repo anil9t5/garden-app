@@ -1,18 +1,18 @@
 import React from "react"
+import Link from "next/link"
 import NonWoodyPlantSelector from "../species-selectors/NonWoodyPlantSelector"
 import WoodyPlantSelector from "../species-selectors/WoodyPlantSelector"
-import Link from "next/link"
 
 const SpeciesOption = () => {
   return (
     <div className="d-flex justify-content-center">
       <div className="selection-blocks d-flex align-items-center justify-content-evenly">
-        <Link href="/woody_plants">
+        <Link href={{ pathname: "/plants", query: { type: "woody" } }}>
           <a>
             <WoodyPlantSelector />
           </a>
         </Link>
-        <Link href="/nonwoody_plants">
+        <Link href={{ pathname: "/plants", query: { type: "nonwoody" } }}>
           <a>
             <NonWoodyPlantSelector />
           </a>

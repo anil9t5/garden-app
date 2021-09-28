@@ -13,7 +13,7 @@ const Admin = () => {
     if (!isLoggedIn) {
       Router.push("/login")
     }
-  }, [mounted, isLoggedIn]) //This array is a dependency array, which runs this effect will only when the values in the array changes.
+  }, []) //This array is a dependency array, which runs this effect will only when the values in the array changes. So, if there is any item in the array, it will make the DOM re-render based on the item in the array...
 
   const onLogOut = () => {
     auth.logOut()

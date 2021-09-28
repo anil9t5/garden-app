@@ -125,9 +125,7 @@ const SideNav = ({
           padding: 15px 20px;
           margin-top: 25px;
           height: auto;
-          .options {
-            margin-bottom: 20px;
-          }
+          margin-bottom: 25px;
         }
       `}</style>
     </div>

@@ -1,11 +1,11 @@
 import { combineReducers } from "redux"
-import { postsReducer } from "./postsReducer"
+import { getPlantsReducer } from "./getPlantsReducer"
 import { loginReducer } from "./loginReducer"
 import { postFileDataReducer } from "./postFileDataReducer"
 import { selectorsReducer } from "./selectorsReducer"
 
 export default combineReducers({
-  post: postsReducer,
+  post: getPlantsReducer,
   user: loginReducer,
   json_data: postFileDataReducer,
   selector: selectorsReducer,

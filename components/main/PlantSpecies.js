@@ -5,7 +5,8 @@ const PlantSpecies = ({ plant }) => {
   const router = useRouter()
   return (
     <>
-      {router.pathname == "/nonwoody_plants" &&
+      {router.pathname == `/plants` &&
+      router.query.type == `nonwoody` &&
       plant.acf.plant_type == "non-woody" ? (
         <div
           className={
@@ -29,7 +30,8 @@ const PlantSpecies = ({ plant }) => {
           </div>
         </div>
       ) : (
-        router.pathname == "/woody_plants" &&
+        router.pathname == "/plants" &&
+        router.query.type == `woody` &&
         plant.acf.plant_type == "woody" && (
           <div
             className={
