@@ -1,6 +1,7 @@
 export const GET_PLANTS = "GET_PLANTS"
 export const POST_USERDATA = "POST_USERDATA"
 export const POST_JSONDATA = "POST_JSONDATA"
+export const GET_PLANT = "GET_PLANT"
 
 //Selectors data
 export const GET_HABITAT = "GET_HABITAT"
@@ -23,3 +24,5 @@ export const SELECTOR_FILTER = "SELECTOR_FILTER"
 export const FILTER_CHECKED = "FILTER_CHECKED"
 export const SELECTED_FILTER_LIST = "SELECTED_FILTER_LIST"
 export const ACTIVE_SELECTOR_LIST = "ACTIVE_SELECTOR_LIST"
+
+export const IS_LOADING = "IS_LOADING"

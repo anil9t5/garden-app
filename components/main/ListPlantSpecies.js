@@ -1,22 +1,73 @@
-import { connect } from "react-redux"
+/* eslint-disable @next/next/no-img-element */
+import { connect, useDispatch } from "react-redux"
+import { useRouter } from "next/router"
+import Link from "next/link"
 import PlantSpecies from "./PlantSpecies"
+import * as options from "../../data/sideNavListDataArray"
 
-const ListPlantSpecies = ({ plants_list, activeFilterList }) => {
+const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
   let filteredList
+
   if (activeFilterList.length === 0) {
     filteredList = plants_list
   } else {
-    filteredList = plants_list.filter((item) =>
-      activeFilterList.includes(item.acf.habitat[0].value)
-    )
+    const filterKeys = Object.keys(options)
+    filteredList = plants_list.filter((item) => {
+      return filterKeys.some((key) => {
+        return item.acf.characteristics[key].some((element) => {
+          return activeFilterList.includes(element)
+        })
+      })
+    })
   }
-  console.log(filteredList)
+
+  console.log("Active list", activeFilterList)
+  console.log("Filter list", filteredList)
+
   return (
     <div className="d-flex flex-wrap">
-      {filteredList.length > 0 &&
+      {filteredList.length > 0 ? (
         filteredList.map((data, index) => {
-          return <PlantSpecies plant={data} key={data.id} />
-        })}
+          return (
+            <div key={data.id}>
+              <Link
+                href={{
+                  pathname: `/plants/${data.id}`,
+                  query: { type: "nonwoody" },
+                }}>
+                <a>
+                  <PlantSpecies plant={data} />
+                </a>
+              </Link>
+            </div>
+          )
+        })
+      ) : !isLoading ? (
+        <div className="info-section d-flex align-items-center justify-content-center">
+          <div className="d-flex flex-column text-center">
+            <img src="../images/no_result_found.png" alt="" />
+            <h3>Oops! No data found!</h3>
+          </div>
+        </div>
+      ) : (
+        <div className="d-flex align-items-center img-container">
+          <img src="../../images/loading.gif" alt="loader" />
+        </div>
+      )}
+      <style jsx>{`
+        .info-section {
+          height: 100%;
+          width: 100%;
+        }
+        .img-container {
+          img {
+            position: absolute;
+            top: 50%;
+            left: 58%;
+            width: 80px;
+          }
+        }
+      `}</style>
     </div>
   )
 }

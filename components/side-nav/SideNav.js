@@ -19,12 +19,11 @@ import {
 
 const SideNav = ({
   habitat,
-  flowerPetalColor,
-  leafBladeEdges,
-  leafType,
-  leafArrangement,
-  county,
-  selectorFilterList,
+  flower_petal_colour,
+  leaf_blade_edges,
+  leaf_type,
+  leaf_arrangement,
+  new_brunswick_county,
   activeFilterList,
 }) => {
   const dispatch = useDispatch()
@@ -38,33 +37,33 @@ const SideNav = ({
         // dispatch(dispatch({ type: "TOGGLE_HABITAT", payload: updatedHabitat }))
         dispatch(toggleHabitatData(updatedHabitat))
         break
-      case "flowerPetalColor":
-        const updatedFlowerPetalColor = flowerPetalColor.map((item, index) =>
+      case "flower_petal_colour":
+        const updatedFlowerPetalColor = flower_petal_colour.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleFlowerPetalColorData(updatedFlowerPetalColor))
         break
 
-      case "leafBladeEdges":
-        const updatedLeafBladeEdges = leafBladeEdges.map((item, index) =>
+      case "leaf_blade_edges":
+        const updatedLeafBladeEdges = leaf_blade_edges.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleLeafBladeEdgesData(updatedLeafBladeEdges))
         break
-      case "leafType":
-        const updatedLeafType = leafType.map((item, index) =>
+      case "leaf_type":
+        const updatedLeafType = leaf_type.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleLeafTypeData(updatedLeafType))
         break
-      case "leafArrangement":
-        const updatedLeafArrangement = leafArrangement.map((item, index) =>
+      case "leaf_arrangement":
+        const updatedLeafArrangement = leaf_arrangement.map((item, index) =>
           index === position ? !item : item
         )
         dispatch(toggleLeafArrangementData(updatedLeafArrangement))
         break
-      case "newBrunswickCounty":
-        const updatedCounty = county.map(
+      case "new_brunswick_county":
+        const updatedCounty = new_brunswick_county.map(
           (item, index) => (index === position ? !item : item) //if index === position then !item i.e. true, otherwise false, since initially item is false...
         )
         dispatch(toggleCountyData(updatedCounty))
@@ -79,11 +78,11 @@ const SideNav = ({
     if (activeFilterList.includes(filter)) {
       const filterIndex = activeFilterList.indexOf(filter)
       const newFilter = [...activeFilterList]
-      newFilter.splice(filterIndex, 1)
-      // this.setState({ activeFilterList: newFilter })
+      newFilter.splice(filterIndex, 1) //Remove one element from the newFilter i.e array.splice(index, how many items)
+      dispatch(selectorFilterData(filter))
       dispatch(activeFilterData(newFilter))
     } else {
-      // this.setState({ activeFilterList: [...activeFilterList, filter] })
+      dispatch(selectorFilterData(filter))
       dispatch(activeFilterData([...activeFilterList, filter]))
     }
   }
@@ -109,11 +108,11 @@ const SideNav = ({
         <SideNavContent
           options={options}
           habitat={habitat}
-          flowerPetalColor={flowerPetalColor}
-          leafBladeEdges={leafBladeEdges}
-          leafType={leafType}
-          leafArrangement={leafArrangement}
-          county={county}
+          flower_petal_colour={flower_petal_colour}
+          leaf_blade_edges={leaf_blade_edges}
+          leaf_type={leaf_type}
+          leaf_arrangement={leaf_arrangement}
+          new_brunswick_county={new_brunswick_county}
           onSelectorChange={onSelectorChange}
           handleOnChange={handleOnChange}
         />
@@ -123,12 +122,11 @@ const SideNav = ({
           background-color: #f5f6f8;
           border-radius: 10px;
           border: 1px solid #e0e1e3;
-          padding: 15px 20px;
+          padding: 10px 17px;
           margin-top: 25px;
           height: auto;
-          .options {
-            margin-bottom: 20px;
-          }
+          margin-bottom: 25px;
+          padding-bottom: 25px;
         }
       `}</style>
     </div>
@@ -138,12 +136,11 @@ const SideNav = ({
 const mapStateToProps = (state) => {
   return {
     habitat: state.selector.habitat,
-    flowerPetalColor: state.selector.flowerPetalColor,
-    leafBladeEdges: state.selector.leafBladeEdges,
-    leafType: state.selector.leafType,
-    leafArrangement: state.selector.leafArrangement,
-    county: state.selector.county,
-    selectorFilterList: state.selector.selectorFilterList,
+    flower_petal_colour: state.selector.flower_petal_colour,
+    leaf_blade_edges: state.selector.leaf_blade_edges,
+    leaf_type: state.selector.leaf_type,
+    leaf_arrangement: state.selector.leaf_arrangement,
+    new_brunswick_county: state.selector.new_brunswick_county,
     activeFilterList: state.selector.activeFilterList,
   }
 }

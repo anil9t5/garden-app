@@ -1,0 +1,27 @@
+import * as types from "../types"
+const initialState = {
+  plants_list: [],
+  plant_details: [],
+  isLoading: true,
+}
+export const getPlantsReducer = (state = initialState, action) => {
+  switch (action.type) {
+    case types.GET_PLANTS:
+      return {
+        ...state,
+        plants_list: action.payload,
+      }
+    case types.GET_PLANT:
+      return {
+        ...state,
+        plant_details: action.payload,
+      }
+    case types.IS_LOADING:
+      return {
+        ...state,
+        isLoading: action.payload,
+      }
+    default:
+      return state
+  }
+}
