@@ -122,10 +122,11 @@ const SideNav = ({
           background-color: #f5f6f8;
           border-radius: 10px;
           border: 1px solid #e0e1e3;
-          padding: 15px 20px;
+          padding: 10px 17px;
           margin-top: 25px;
           height: auto;
           margin-bottom: 25px;
+          padding-bottom: 25px;
         }
       `}</style>
     </div>

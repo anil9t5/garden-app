@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useRouter } from "next/router"
+import * as api from "../../generics/api"
 
 const PlantSpecies = ({ plant }) => {
   const router = useRouter()
@@ -24,9 +25,43 @@ const PlantSpecies = ({ plant }) => {
           </div>
           <div className="description">
             <h4 className="heading mt-3">{`${plant.acf.genus} ${plant.acf.species}`}</h4>
-            <span>
-              <strong>Common name:</strong> {plant.acf.common_name}
-            </span>
+            <div className="d-flex flex-column">
+              <span>
+                <strong>Common name:</strong> {plant.acf.common_name}
+              </span>
+              <div className="d-flex flex-wrap tags">
+                {plant.acf.characteristics.habitat.map((val, index) => (
+                  <span key={index}>{val}, &nbsp;</span>
+                ))}
+                {plant.acf.characteristics.leaf_type.map((val, index) => (
+                  <span key={index}>{val} &nbsp;</span>
+                ))}
+                {plant.acf.characteristics.leaf_arrangement.map(
+                  (val, index) => (
+                    <span key={index}>{val} &nbsp;</span>
+                  )
+                )}
+                {plant.acf.characteristics.leaf_blade_edges.map(
+                  (val, index) => (
+                    <span key={index}>{val} &nbsp;</span>
+                  )
+                )}
+                {plant.acf.characteristics.flower_petal_colour.map(
+                  (val, index) => (
+                    <span key={index}>
+                      {val}
+                      {val !==
+                      plant.acf.characteristics.flower_petal_colour
+                        .slice(-1)
+                        .pop()
+                        ? ","
+                        : ""}
+                      &nbsp;
+                    </span>
+                  )
+                )}
+              </div>
+            </div>
           </div>
         </div>
       ) : (
@@ -49,9 +84,43 @@ const PlantSpecies = ({ plant }) => {
             </div>
             <div className="description">
               <h4 className="heading mt-3">{`${plant.acf.genus} ${plant.acf.species}`}</h4>
-              <span>
-                <strong>Common name:</strong> {plant.acf.common_name}
-              </span>
+              <div className="d-flex flex-column">
+                <span>
+                  <strong>Common name:</strong> {plant.acf.common_name}
+                </span>
+                <div className="d-flex flex-wrap tags">
+                  {plant.acf.characteristics.habitat.map((val, index) => (
+                    <span key={index}>{val}, &nbsp;</span>
+                  ))}
+                  {plant.acf.characteristics.leaf_type.map((val, index) => (
+                    <span key={index}>{val} &nbsp;</span>
+                  ))}
+                  {plant.acf.characteristics.leaf_arrangement.map(
+                    (val, index) => (
+                      <span key={index}>{val} &nbsp;</span>
+                    )
+                  )}
+                  {plant.acf.characteristics.leaf_blade_edges.map(
+                    (val, index) => (
+                      <span key={index}>{val} &nbsp;</span>
+                    )
+                  )}
+                  {plant.acf.characteristics.flower_petal_colour.map(
+                    (val, index) => (
+                      <span key={index}>
+                        {val}
+                        {val !==
+                        plant.acf.characteristics.flower_petal_colour
+                          .slice(-1)
+                          .pop()
+                          ? ","
+                          : ""}
+                        &nbsp;
+                      </span>
+                    )
+                  )}
+                </div>
+              </div>
             </div>
           </div>
         )
@@ -63,6 +132,9 @@ const PlantSpecies = ({ plant }) => {
           margin: 10px;
           overflow: hidden;
           margin-bottom: 40px;
+        }
+        .heading {
+          font-weight: 900;
         }
         .img-container {
           overflow: hidden;
@@ -78,6 +150,12 @@ const PlantSpecies = ({ plant }) => {
         }
         .hidden {
           display: none;
+        }
+        .tags {
+          span {
+            color: #84878e;
+            font-size: 12.5px;
+          }
         }
       `}</style>
     </>

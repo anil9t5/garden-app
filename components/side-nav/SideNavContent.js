@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import * as api from "../../generics/api"
 import "bootstrap-icons/font/bootstrap-icons.css"
 
@@ -41,28 +42,36 @@ const SideNavContent = ({
 
   const colorValues = [
     {
-      color: "gb",
+      color: "../../images/gb.png",
       label: "green to brown",
     },
     {
-      color: "bp",
+      color: "../../images/bp.png",
       label: "blue to purple",
     },
     {
-      color: "o",
+      color: "../../images/o.png",
       label: "orange",
     },
     {
-      color: "y",
+      color: "../../images/y.png",
       label: "yellow",
     },
     {
-      color: "w",
+      color: "../../images/w.png",
       label: "white",
     },
     {
-      color: "pr",
+      color: "../../images/pr.png",
       label: "pink to red",
+    },
+    {
+      color: "../../images/dn.png",
+      label: "don't know",
+    },
+    {
+      color: "../../images/dn.png",
+      label: "doesn't apply",
     },
   ]
   let id = 0
@@ -103,32 +112,71 @@ const SideNavContent = ({
                   onChange={(e) => handleOnChange(index, item.key)}
                 />
                 <label className="form-check-label" htmlFor={id}>
-                  {api.capitalizeFirstLetter(data)}{" "}
-                  {colorValues.map((item, index) => (
-                    <span
-                      className={data !== item.label ? "hide" : ""}
-                      key={index}>
-                      {item.color}
-                    </span>
+                  {colorValues.map((value, index) => (
+                    <div key={index} className="color-value">
+                      <img
+                        src={value.color}
+                        className={
+                          data == value.label &&
+                          item.key == "flower_petal_colour"
+                            ? ""
+                            : "hide"
+                        }
+                        width="15px"
+                        alt="color values"
+                      />
+                    </div>
                   ))}
+                  {item.key == "flower_petal_colour" ? (
+                    <span>&nbsp;&nbsp;</span>
+                  ) : (
+                    <span></span>
+                  )}
+                  {api.capitalizeFirstLetter(data)}{" "}
                 </label>
               </div>
             )
           })}
         </div>
+        <hr
+          className={item.key !== "new_brunswick_county" ? "separator" : "hide"}
+        />
         <style jsx>{`
           .selector-heading {
             font-size: 13px;
-            margin-top: 20px;
+            margin-top: 10px;
+            font-weight: 900;
           }
           .form-check {
-            width: 130px;
+            width: 135px;
           }
           .form-check-label {
             font-size: 13px;
+            img {
+              margin-top: -3px;
+            }
           }
           :global(.bi-check2-square::before) {
             font-weight: 600 !important;
+          }
+          :global(.form-check-input:hover) {
+            cursor: pointer !important;
+          }
+          :global(.form-check-label:hover) {
+            cursor: pointer !important;
+          }
+          .color-value {
+            width: 14px;
+            height: auto;
+            float: left;
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: contain;
+            }
+          }
+          .separator {
+            background-color: #979899;
           }
         `}</style>
       </div>

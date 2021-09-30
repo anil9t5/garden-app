@@ -50,3 +50,10 @@ a {
 .dauDdw span {
   font-size: 16px !important;
 }
+.form-check-input[type="checkbox"] {
+  border-radius: 0.25em;
+  border-color: #555555;
+  border-width: 2px;
+  width: 15px;
+  height: 15px;
+}
