@@ -25,3 +25,11 @@ export const toggleLoader = (option) => async (dispatch) => {
     payload: option,
   })
 }
+
+export const searchPlantPosts = (slug) => async (dispatch) => {
+  const response = await api.get(`${API_URL}plants?search=${slug}`)
+  dispatch({
+    type: types.GET_SEARCH_RESULTS,
+    payload: response.data,
+  })
+}
