@@ -9,8 +9,11 @@ const SearchFormValidate = ({ submitSearchQuery }) => {
       <Formik
         initialValues={{ search: "" }}
         onSubmit={(values, { setSubmitting }) => {
-          submitSearchQuery(values["search"])
-          Router.push("/search")
+          values == "" ? fetchPlantPosts() : submitSearchQuery(values["search"])
+          Router.push({
+            pathname: "/search",
+            query: { keyword: values["search"] },
+          })
         }}
         validationSchema={yup.object().shape({
           search: yup.string().required("Required"),

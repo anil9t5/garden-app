@@ -11,7 +11,6 @@ export const fetchPlantPosts = () => async (dispatch) => {
 }
 
 export const fetchPlantPost = (id) => async (dispatch) => {
-  console.log(id)
   const response = await api.get(`${API_URL}plants/${id}`)
   dispatch({
     type: types.GET_PLANT,

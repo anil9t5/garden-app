@@ -7,12 +7,10 @@ import PlantSpeciesDetails from "../../components/main/PlantSpeciesDetails"
 const PlantsDetails = ({ plant_details }) => {
   const dispatch = useDispatch()
   const router = useRouter()
-
-  console.log(plant_details)
   useEffect(() => {
     if (!router.isReady) return
     dispatch(fetchPlantPost(router.query["id"]))
-  }, [router.isReady])
+  }, [dispatch, router.isReady, router.query])
 
   return (
     <div>

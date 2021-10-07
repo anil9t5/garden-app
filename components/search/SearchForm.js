@@ -1,16 +1,23 @@
 import { useEffect } from "react"
 import { connect, useDispatch } from "react-redux"
-import { searchPlantPosts } from "../../redux/actions/getPlantsAction"
+import {
+  fetchPlantPosts,
+  searchPlantPosts,
+} from "../../redux/actions/getPlantsAction"
 import SearchFormValidate from "./SearchFormValidate"
 
 const SearchForm = () => {
   const dispatch = useDispatch()
   const submitSearchQuery = (value) => {
     dispatch(searchPlantPosts(value))
+    dispatch(fetchPlantPosts)
   }
   return (
     <div>
-      <SearchFormValidate submitSearchQuery={submitSearchQuery} />
+      <SearchFormValidate
+        submitSearchQuery={submitSearchQuery}
+        fetchPlantPosts={fetchPlantPosts}
+      />
     </div>
   )
 }
