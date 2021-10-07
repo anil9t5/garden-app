@@ -14,15 +14,11 @@ const search = ({ plants }) => {
 
 export default search
 export async function getStaticProps() {
-  try {
-    const res = await axios.get(`${API_URL}plants`)
-    return {
-      props: {
-        plants: res.data,
-      },
-      revalidate: 1,
-    }
-  } catch (error) {
-    console.error(error)
+  const res = await axios.get(`${API_URL}plants`)
+  return {
+    props: {
+      plants: res.data,
+    },
+    revalidate: 1,
   }
 }
