@@ -2,6 +2,7 @@ import * as types from "../types"
 const initialState = {
   plants_list: [],
   plant_details: [],
+  search_results: [],
   isLoading: true,
 }
 export const getPlantsReducer = (state = initialState, action) => {
@@ -20,6 +21,11 @@ export const getPlantsReducer = (state = initialState, action) => {
       return {
         ...state,
         isLoading: action.payload,
+      }
+    case types.GET_SEARCH_RESULTS:
+      return {
+        ...state,
+        search_results: action.payload,
       }
     default:
       return state

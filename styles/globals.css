@@ -17,7 +17,12 @@ a {
 * {
   box-sizing: border-box;
 }
-
+.breadcrumb {
+  color: #84878e !important;
+  padding-left: 10px;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
 .selection-blocks {
   width: 65%;
   padding: 20px 40px;

@@ -2,7 +2,6 @@
 import React from "react"
 
 const PlantSpeciesDetails = ({ plant_details }) => {
-  console.log(plant_details.length)
   return (
     <div className="m-4">
       {plant_details.length !== 0 ? (
