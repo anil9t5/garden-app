@@ -21,8 +21,6 @@ const SearchResults = ({ search_results, plants_list }) => {
     setLoading(false)
   }, [dispatch, router.isReady, router.query.keyword])
 
-  console.log(router.query.keyword)
-  console.log(hasSearchKeyword)
   return (
     <>
       <span className="breadcrumb">
