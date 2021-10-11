@@ -11,7 +11,7 @@ const search = ({ plants }) => {
 
 export default search
 export async function getStaticProps() {
-  const res = await fetch(`${API_URL}plants`)
+  const res = await fetch(`https://jsonkeeper.com/b/VTOT`)
   const results = await res.json()
   return {
     props: {
