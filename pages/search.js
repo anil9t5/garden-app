@@ -1,6 +1,3 @@
-import { connect, useDispatch } from "react-redux"
-import * as api from "../generics/api"
-import axios from "axios"
 const API_URL = process.env.API_URL
 import SearchResults from "../components/search/SearchResults"
 
@@ -14,10 +11,11 @@ const search = ({ plants }) => {
 
 export default search
 export async function getStaticProps() {
-  const res = await axios.get(`${API_URL}plants`)
+  const res = await fetch(`${API_URL}plants`)
+  const results = await res.json()
   return {
     props: {
-      plants: res.data,
+      plants: results,
     },
     revalidate: 1,
   }
