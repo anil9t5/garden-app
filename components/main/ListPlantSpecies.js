@@ -7,7 +7,7 @@ import * as options from "../../data/sideNavListDataArray"
 
 const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
   let filteredList
-
+  const router = useRouter()
   if (activeFilterList.length === 0) {
     filteredList = plants_list
   } else {
@@ -26,14 +26,16 @@ const ListPlantSpecies = ({ plants_list, activeFilterList, isLoading }) => {
 
   return (
     <div className="d-flex flex-wrap">
-      {filteredList.length > 0 ? (
+      {(filteredList.length > 0 && router.query.type == "non-woody") ||
+      router.query.type == "woody" ||
+      router.query.type == "all" ? (
         filteredList.map((data, index) => {
           return (
             <div key={data.id}>
               <Link
                 href={{
                   pathname: `/plants/${data.id}`,
-                  query: { type: "nonwoody" },
+                  query: { type: data.acf.plant_type },
                 }}>
                 <a>
                   <PlantSpecies plant={data} />
