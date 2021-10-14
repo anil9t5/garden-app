@@ -1,12 +1,13 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 /* eslint-disable @next/next/no-img-element */
+import Link from "next/link"
 
 import SearchForm from "../search/SearchForm"
 
 const Navbar = () => {
   return (
     <div>
-      <nav className="navbar navbar-expand-lg navbar-light bg-light">
+      <nav className="navbar navbar-expand-lg fixed-top navbar-light bg-light">
         <div className="container">
           <a className="navbar-brand" href="/">
             <div className="logo-container">
@@ -33,25 +34,21 @@ const Navbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="#">
-                  Species
-                </a>
+                <Link
+                  href={{
+                    pathname: `plants`,
+                    query: { type: "all" },
+                  }}>
+                  <a className="nav-link">Species</a>
+                </Link>
               </li>
               <li className="nav-item">
-                <a
-                  className="nav-link disabled"
-                  href="#"
-                  tabIndex="-1"
-                  aria-disabled="true">
+                <a className="nav-link" href="/about" tabIndex="-1">
                   About
                 </a>
               </li>
               <li className="nav-item">
-                <a
-                  className="nav-link disabled"
-                  href="#"
-                  tabIndex="-1"
-                  aria-disabled="true">
+                <a className="nav-link" href="/contact" tabIndex="-1">
                   Contact Us
                 </a>
               </li>
@@ -72,6 +69,9 @@ const Navbar = () => {
             height: 100%;
             object-fit: contain;
           }
+        }
+        .navbar-nav {
+          margin-right: 20px;
         }
       `}</style>
     </div>
